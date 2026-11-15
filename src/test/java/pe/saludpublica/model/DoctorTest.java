@@ -40,4 +40,13 @@ class DoctorTest {
                         "CMP12345", "CARDIOLOGIA")
         );
     }
+
+    @Test
+    @DisplayName("No debe permitir apellidos nulos")
+    void shouldThrowExceptionWhenSurnamesAreNull() {
+        assertThrows(IllegalArgumentException.class, () ->
+                new Doctor("12345678", "Juan", null,
+                        "CMP12345", "CARDIOLOGIA")
+        );
+    }
 }
