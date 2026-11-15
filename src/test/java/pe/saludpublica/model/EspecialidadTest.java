@@ -42,4 +42,14 @@ class EspecialidadTest {
                 especialidad.getDescripcion()
         );
     }
+
+    @Test
+    @DisplayName("No debe permitir descripción nula")
+    void shouldThrowExceptionWhenDescriptionIsNull() {
+        assertThrows(IllegalArgumentException.class, () ->
+                new Especialidad("Cardiologia", null)
+        );
+    }
 }
+
+
