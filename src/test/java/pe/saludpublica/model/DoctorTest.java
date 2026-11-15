@@ -40,4 +40,13 @@ class DoctorTest {
                         "CMP12345", "CARDIOLOGIA")
         );
     }
+
+    @Test
+    @DisplayName("No debe permitir colegiatura nula")
+    void shouldThrowExceptionWhenLicenseIsNull() {
+        assertThrows(IllegalArgumentException.class, () ->
+                new Doctor("12345678", "Juan", "Perez",
+                        "201", "CARDIOLOGIA")
+        );
+    }
 }
