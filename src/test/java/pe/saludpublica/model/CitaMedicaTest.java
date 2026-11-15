@@ -110,4 +110,13 @@ class CitaMedicaTest {
         assertEquals("Consulta general", cita.getMotivo());
         assertEquals(EstadoCita.PROGRAMADA, cita.getEstado());
     }
+
+@Test
+@DisplayName("No debe permitir motivo nulo")
+void shouldThrowExceptionWhenReasonIsNull() {
+    assertThrows(IllegalArgumentException.class, () ->
+            new CitaMedica("PAC001", "DOC001", "ESP001",
+                    fechaHora, null, EstadoCita.PROGRAMADA)
+    );
+}
 }
