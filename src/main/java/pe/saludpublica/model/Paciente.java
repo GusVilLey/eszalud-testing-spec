@@ -11,6 +11,9 @@ public class Paciente {
         if (documento==null){
             throw new IllegalArgumentException("El documento NO puede salir nulo");
         }
+        if (nombres == null) {
+            throw new IllegalArgumentException("Los nombres no pueden ser nulos");
+        }
         this.documento= documento;
         this.nombres=nombres;
         this.apellidos=apellidos;
