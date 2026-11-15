@@ -21,4 +21,12 @@ class EspecialidadTest {
         assertThrows(IllegalArgumentException.class,
                 () -> new Especialidad(null, "Atención de niños y adolescentes"));
     }
+    @Test
+    @DisplayName("Conservar cada atributo después de construir el objeto")
+    void shouldKeepEachAttributeAfterConstruction() {
+        Especialidad especialidad = new Especialidad("Cardiología", "Diagnóstico y tratamiento de enfermedades del corazón");
+
+        assertEquals("Cardiología", especialidad.getNombre());
+        assertEquals("Diagnóstico y tratamiento de enfermedades del corazón", especialidad.getDescripcion());
+    }
 }
