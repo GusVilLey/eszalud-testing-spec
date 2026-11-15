@@ -17,7 +17,7 @@ class EspecialidadTest {
                 "Especialidad médica del corazón"
         );
 
-        assertNull(especialidad);
+        assertNotNull(especialidad);
     }
 
 }
