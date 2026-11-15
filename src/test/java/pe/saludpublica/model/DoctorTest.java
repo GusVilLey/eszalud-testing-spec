@@ -26,7 +26,7 @@ class DoctorTest {
         @DisplayName("No debe permitir documento nulo")
         void shouldThrowExceptionWhenDocumentIsNull () {
             assertThrows(IllegalArgumentException.class, () ->
-                    new Doctor("", "Juan", "Perez",
+                    new Doctor(null, "Juan", "Perez",
                             "CMP12345", "CARDIOLOGIA")
             );
         }
