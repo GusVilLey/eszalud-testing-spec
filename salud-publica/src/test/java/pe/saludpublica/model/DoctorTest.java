@@ -36,4 +36,10 @@ class DoctorTest {
         assertThrows(IllegalArgumentException.class,
                 () -> new Doctor("11223344", "Carlos", null, "CMP 085432", "ESP-001"));
     }
+    @Test
+    @DisplayName("Rechazar la creación de un doctor sin colegiatura")
+    void shouldRejectDoctorWithoutLicense() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Doctor("11223344", "Carlos", "Ramírez", null, "ESP-001"));
+    }
 }
