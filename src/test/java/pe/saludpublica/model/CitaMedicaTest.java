@@ -57,4 +57,12 @@ class CitaMedicaTest {
                         fechaHora, "Consulta general", EstadoCita.PROGRAMADA)
         );
     }
+    @Test
+    @DisplayName("No debe permitir fecha y hora nulas")
+    void shouldThrowExceptionWhenDateTimeIsNull() {
+        assertThrows(IllegalArgumentException.class, () ->
+                new CitaMedica("PAC001", "DOC001", "ESP001",
+                        null, "Consulta general", EstadoCita.PROGRAMADA)
+        );
+    }
 }
