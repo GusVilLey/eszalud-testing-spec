@@ -1,4 +1,5 @@
 
+
 package pe.saludpublica.model;
 
 public class Paciente {
@@ -51,3 +52,4 @@ public class Paciente {
         return correo;
     }
 }
+
