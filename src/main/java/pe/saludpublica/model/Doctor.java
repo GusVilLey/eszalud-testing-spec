@@ -27,6 +27,12 @@ public class Doctor {
         this.especialidad = especialidad;
     }
 
+    private void requerirNoNulo(String valor, String mensaje) {
+        if (valor == null) {
+            throw new IllegalArgumentException(mensaje);
+        }
+    }
+
     public String getDocumento() {
         return documento;
     }
