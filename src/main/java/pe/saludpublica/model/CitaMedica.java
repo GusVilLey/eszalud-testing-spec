@@ -35,6 +35,12 @@ public class CitaMedica {
         } else {
             this.estado = EstadoCita.valueOf(estado);
         }
+
+    }
+    private void requerirNoNulo(String valor, String mensaje) {
+        if (valor == null) {
+            throw new IllegalArgumentException(mensaje);
+        }
     }
 
     public String getPaciente() {
