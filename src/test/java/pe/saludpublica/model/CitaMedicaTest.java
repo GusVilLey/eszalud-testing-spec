@@ -47,4 +47,13 @@ class CitaMedicaTest {
                         fechaHora, "Consulta general", EstadoCita.PROGRAMADA)
         );
     }
+
+    @Test
+    @DisplayName("No debe permitir especialidad nula")
+    void shouldThrowExceptionWhenSpecialtyIsNull() {
+        assertThrows(IllegalArgumentException.class, () ->
+                new CitaMedica("PAC001", "DOC001", "Cardiologia",
+                        fechaHora, "Consulta general", EstadoCita.PROGRAMADA)
+        );
+    }
 }
