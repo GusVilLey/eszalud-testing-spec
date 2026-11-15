@@ -58,4 +58,12 @@ class CitaMedicaTest {
                 () -> new CitaMedica("PAC-001", "DOC-001", "ESP-001",
                         LocalDateTime.of(2026, 12, 1, 10, 30), "Control general", null));
     }
+    @Test
+    @DisplayName("Conservar el estado recibido al crear la cita")
+    void shouldKeepProvidedStatus() {
+        CitaMedica cita = new CitaMedica("PAC-001", "DOC-001", "ESP-001",
+                LocalDateTime.of(2026, 12, 1, 10, 30), "Control general", EstadoCita.ATENDIDA);
+
+        assertEquals(EstadoCita.ATENDIDA, cita.getEstado());
+    }
 }
