@@ -37,4 +37,11 @@ class CitaMedicaTest {
                 () -> new CitaMedica("PAC-001", null, "ESP-001",
                         LocalDateTime.of(2026, 12, 1, 10, 30), "Control general", EstadoCita.PROGRAMADA));
     }
+    @Test
+    @DisplayName("Rechazar la creación de una cita sin especialidad")
+    void shouldRejectAppointmentWithoutSpecialty() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new CitaMedica("PAC-001", "DOC-001", null,
+                        LocalDateTime.of(2026, 12, 1, 10, 30), "Control general", EstadoCita.PROGRAMADA));
+    }
 }
