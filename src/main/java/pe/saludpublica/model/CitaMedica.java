@@ -18,6 +18,9 @@ public class CitaMedica {
         if (especialidad == null) {
             throw new IllegalArgumentException("La especialidad no puede ser nula");
         }
+        if (fechaHora == null) {
+            throw new IllegalArgumentException("La fecha y hora no pueden ser nulas");
+        }
         this.paciente = paciente;
         this.doctor = doctor;
         this.especialidad = especialidad;
