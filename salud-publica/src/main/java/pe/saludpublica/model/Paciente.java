@@ -19,6 +19,9 @@ public class Paciente {
         this.apellidos = apellidos;
         this.telefono = telefono;
         this.correo = correo;
+        if (apellidos == null) {
+            throw new IllegalArgumentException("Los apellidos del paciente son obligatorios");
+        }
     }
 
     public String getDocumento() { return documento; }
