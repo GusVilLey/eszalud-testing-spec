@@ -121,7 +121,7 @@ void shouldReturnAppointmentInformation() {
 void shouldThrowExceptionWhenReasonIsNull() {
     assertThrows(IllegalArgumentException.class, () ->
             new CitaMedica("PAC001", "DOC001", "ESP001",
-                    fechaHora, "", EstadoCita.PROGRAMADA)
+                    fechaHora, null, EstadoCita.PROGRAMADA)
     );
 }
 }
