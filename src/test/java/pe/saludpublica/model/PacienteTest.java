@@ -56,7 +56,7 @@ void shouldRejectPatientWithoutNames() {
 @DisplayName("Debe rechazar un paciente sin apellidos")
 void shouldRejectPatientWithoutSurnames() {
     assertThrows(IllegalArgumentException.class, () ->
-            new Paciente("12345678", "Juan", "",
+            new Paciente("12345678", "Juan", null,
                     "987654321", "juan@gmail.com")
     );
 }
