@@ -75,4 +75,19 @@ class CitaMedicaTest {
                         fechaHora, "Consulta general", null)
         );
     }
+
+    @Test
+    @DisplayName("Debe aceptar un estado válido")
+    void shouldAcceptValidStatus() {
+        CitaMedica cita = new CitaMedica(
+                "PAC001",
+                "DOC001",
+                "ESP001",
+                fechaHora,
+                "Consulta general",
+                EstadoCita.ATENDIDA
+        );
+
+        assertEquals(EstadoCita.ATENDIDA, cita.getEstado());
+    }
 }
