@@ -40,4 +40,19 @@ import static org.junit.jupiter.api.Assertions.*;
                 )
         );
     }
+
+     @Test
+     @DisplayName("Rechazar la creación de un paciente sin nombres")
+    void shouldRejectPatientWithoutFirstName(){
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new Paciente(
+                        "12345678",
+                        null,
+                        "Perez",
+                        "987654321",
+                        "ana@gmail.com"
+                )
+        );
+    }
 }
