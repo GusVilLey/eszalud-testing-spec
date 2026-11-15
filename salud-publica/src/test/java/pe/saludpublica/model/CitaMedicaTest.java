@@ -51,4 +51,11 @@ class CitaMedicaTest {
                 () -> new CitaMedica("PAC-001", "DOC-001", "ESP-001",
                         null, "Control general", EstadoCita.PROGRAMADA));
     }
+    @Test
+    @DisplayName("Rechazar la creación de una cita sin estado")
+    void shouldRejectAppointmentWithoutStatus() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new CitaMedica("PAC-001", "DOC-001", "ESP-001",
+                        LocalDateTime.of(2026, 12, 1, 10, 30), "Control general", null));
+    }
 }
