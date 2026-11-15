@@ -30,21 +30,31 @@ class CitaMedicaTest {
         assertNotNull(cita);
     }
 
-@Test
-@DisplayName("No debe permitir paciente nulo")
-void shouldThrowExceptionWhenPatientIsNull() {
-    assertThrows(IllegalArgumentException.class, () ->
-            new CitaMedica(null, "DOC001", "ESP001",
-                    fechaHora, "Consulta general", EstadoCita.PROGRAMADA)
-    );
-}
-
-@Test
-@DisplayName("No debe permitir doctor nulo")
-void shouldThrowExceptionWhenDoctorIsNull() {
-    assertThrows(IllegalArgumentException.class, () ->
-            new CitaMedica("PAC001", null, "ESP001",
-                    fechaHora, "Consulta general", EstadoCita.PROGRAMADA)
-    );
-}
+    @Test
+    @DisplayName("No debe permitir paciente nulo")
+    void shouldThrowExceptionWhenPatientIsNull() {
+        assertThrows(IllegalArgumentException.class, () ->
+                new CitaMedica(null, "DOC001", "ESP001",
+                        fechaHora, "Consulta general", EstadoCita.PROGRAMADA)
+        );
     }
+
+    @Test
+    @DisplayName("No debe permitir doctor nulo")
+    void shouldThrowExceptionWhenDoctorIsNull() {
+        assertThrows(IllegalArgumentException.class, () ->
+                new CitaMedica("PAC001", null, "ESP001",
+                        fechaHora, "Consulta general", EstadoCita.PROGRAMADA)
+        );
+    }
+
+
+    @Test
+    @DisplayName("No debe permitir especialidad nula")
+    void shouldThrowExceptionWhenSpecialtyIsNull() {
+        assertThrows(IllegalArgumentException.class, () ->
+                new CitaMedica("PAC001", "DOC001", null,
+                        fechaHora, "Consulta general", EstadoCita.PROGRAMADA)
+        );
+    }
+}
