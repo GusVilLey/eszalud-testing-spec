@@ -24,4 +24,20 @@ import static org.junit.jupiter.api.Assertions.*;
         assertEquals("987654321", paciente.getTelefono());
         assertEquals("ana@mail.com", paciente.getCorreo());
     }
+
+    @Test
+    @DisplayName("Rechazar la creacion de un paciente sin documentos")
+    void shouldRejectPatientWithhoutDocument(){
+        assertThrows(
+                IllegalAccessError.class,
+                () -> new Paciente(
+                        null,
+                        "Ana",
+                        "Perez",
+                        "987654321",
+                        "ana@gmail.com"
+
+                )
+        );
+    }
 }
