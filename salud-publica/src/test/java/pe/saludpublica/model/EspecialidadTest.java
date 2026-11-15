@@ -1,0 +1,32 @@
+package pe.saludpublica.model;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class EspecialidadTest {
+
+    @Test
+    @DisplayName("Crear una especialidad con datos válidos")
+    void shouldCreateSpecialtyWithValidData() {
+        Especialidad especialidad = new Especialidad("Pediatría", "Atención de niños y adolescentes");
+
+        assertNotNull(especialidad);
+        assertEquals("Pediatría", especialidad.getNombre());
+        assertEquals("Atención de niños y adolescentes", especialidad.getDescripcion());
+    }
+    @Test
+    @DisplayName("Rechazar una especialidad sin nombre")
+    void shouldRejectSpecialtyWhenNameIsNull() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Especialidad(null, "Atención de niños y adolescentes"));
+    }
+    @Test
+    @DisplayName("Conservar cada atributo después de construir el objeto")
+    void shouldKeepEachAttributeAfterConstruction() {
+        Especialidad especialidad = new Especialidad("Cardiología", "Diagnóstico y tratamiento de enfermedades del corazón");
+
+        assertEquals("Cardiología", especialidad.getNombre());
+        assertEquals("Diagnóstico y tratamiento de enfermedades del corazón", especialidad.getDescripcion());
+    }
+}
