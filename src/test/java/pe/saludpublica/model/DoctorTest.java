@@ -57,4 +57,21 @@ class DoctorTest {
                         null, "CARDIOLOGIA")
         );
     }
+    @Test
+    @DisplayName("Debe obtener correctamente los datos del doctor")
+    void shouldReturnDoctorInformation() {
+        Doctor doctor = new Doctor(
+                "12345678",
+                "Juan",
+                "Perez",
+                "CMP12345",
+                "CARDIOLOGIA"
+        );
+
+        assertEquals("12345678", doctor.getDocumento());
+        assertEquals("Juan", doctor.getNombres());
+        assertEquals("Perez", doctor.getApellidos());
+        assertEquals("CMP12345", doctor.getColegiatura());
+        assertEquals("CARDIOLOGIA", doctor.getEspecialidad());
+    }
     }
