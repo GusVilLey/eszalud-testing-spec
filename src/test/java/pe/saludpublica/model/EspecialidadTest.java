@@ -27,4 +27,19 @@ class EspecialidadTest {
                 new Especialidad(null, "Especialidad médica del corazón")
         );
     }
+
+    @Test
+    @DisplayName("Debe obtener correctamente los datos de la especialidad")
+    void shouldReturnSpecialtyInformation() {
+        Especialidad especialidad = new Especialidad(
+                "Cardiologia",
+                "Especialidad médica del corazón"
+        );
+
+        assertEquals("Cardiologia", especialidad.getNombre());
+        assertEquals(
+                "Especialidad médica del corazón",
+                especialidad.getDescripcion()
+        );
+    }
 }
