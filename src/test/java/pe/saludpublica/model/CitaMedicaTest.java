@@ -52,7 +52,7 @@ class CitaMedicaTest {
     @DisplayName("No debe permitir especialidad nula")
     void shouldThrowExceptionWhenSpecialtyIsNull() {
         assertThrows(IllegalArgumentException.class, () ->
-                new CitaMedica("PAC001", "DOC001", "Cardiologia",
+                new CitaMedica("PAC001", "DOC001", null,
                         fechaHora, "Consulta general", EstadoCita.PROGRAMADA)
         );
     }
