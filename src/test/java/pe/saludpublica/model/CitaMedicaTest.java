@@ -27,6 +27,6 @@ class CitaMedicaTest {
                 EstadoCita.PROGRAMADA
         );
 
-        assertNull(cita);
+        assertNotNull(cita);
     }
 }
