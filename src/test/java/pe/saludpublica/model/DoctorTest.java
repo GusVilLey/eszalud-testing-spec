@@ -73,7 +73,7 @@ class DoctorTest {
 void shouldThrowExceptionWhenSpecialtyIsNull() {
     assertThrows(IllegalArgumentException.class, () ->
             new Doctor("12345678", "Juan", "Perez",
-                    "CMP12345", "cardiologia")
+                    "CMP12345", null)
     );
 }
 }
