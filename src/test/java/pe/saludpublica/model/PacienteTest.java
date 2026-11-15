@@ -28,13 +28,19 @@ public class PacienteTest {
         assertEquals("ana@mail.com", paciente.getCorreo());
     }
 
-
 @Test
-@DisplayName("Debe rechazar un paciente sin nombres")
-void shouldRejectPatientWithoutNames() {
-    assertThrows(IllegalArgumentException.class, () ->
-            new Paciente("12345678", null, "Perez",
-                    "987654321", "juan@gmail.com")
+@DisplayName("Rechazar la creación de un paciente sin documento")
+void shouldRejectPatientWithoutDocument() {
+
+    assertThrows(
+            IllegalArgumentException.class,
+            () -> new Paciente(
+                    null,
+                    "Ana",
+                    "Pérez",
+                    "987654321",
+                    "ana@mail.com"
+            )
     );
-}
+    }
 }
