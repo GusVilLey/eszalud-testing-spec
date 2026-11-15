@@ -12,7 +12,7 @@ public class PacienteTest {
     void shouldCreatePatientWithValidData() {
 
         Paciente paciente = new Paciente(
-                "12345678",
+                "null",
                 "Ana",
                 "Pérez",
                 "987654321",
