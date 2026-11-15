@@ -90,4 +90,24 @@ class CitaMedicaTest {
 
         assertEquals(EstadoCita.ATENDIDA, cita.getEstado());
     }
+
+    @Test
+    @DisplayName("Debe obtener correctamente los datos de la cita")
+    void shouldReturnAppointmentInformation() {
+        CitaMedica cita = new CitaMedica(
+                "PAC001",
+                "DOC001",
+                "ESP001",
+                fechaHora,
+                "Consulta general",
+                EstadoCita.PROGRAMADA
+        );
+
+        assertEquals("PAC001", cita.getPaciente());
+        assertEquals("DOC001", cita.getDoctor());
+        assertEquals("ESP001", cita.getEspecialidad());
+        assertEquals(fechaHora, cita.getFechaHora());
+        assertEquals("Consulta general", cita.getMotivo());
+        assertEquals(EstadoCita.PROGRAMADA, cita.getEstado());
+    }
 }
