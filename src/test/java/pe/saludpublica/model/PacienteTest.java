@@ -51,5 +51,13 @@ void shouldRejectPatientWithoutNames() {
             new Paciente("12345678", null, "Perez",
                     "987654321", "juan@gmail.com")
     );
+
+} @Test
+@DisplayName("Debe rechazar un paciente sin apellidos")
+void shouldRejectPatientWithoutSurnames() {
+    assertThrows(IllegalArgumentException.class, () ->
+            new Paciente("12345678", "Juan", "",
+                    "987654321", "juan@gmail.com")
+    );
 }
 }
