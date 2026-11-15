@@ -24,6 +24,12 @@ public class Paciente {
         this.correo=correo;
     }
 
+    private void requerirNoNulo(String valor, String mensaje) {
+        if (valor == null) {
+            throw new IllegalArgumentException(mensaje);
+        }
+    }
+
     public String getDocumento() {
         return documento;
     }
