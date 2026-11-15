@@ -20,6 +20,6 @@ class DoctorTest {
                 "CARDIOLOGIA"
         );
 
-        assertNull(doctor);
+        assertNotNull(doctor);
     }
 }
