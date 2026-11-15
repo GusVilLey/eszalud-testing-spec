@@ -61,4 +61,19 @@ public class PacienteTest {
                         "987654321", "juan@gmail.com")
         );
     }
+
+    @Test
+    @DisplayName("Debe devolver correctamente los atributos del paciente")
+    void shouldReturnCorrectPatientAttributes() {
+        Paciente paciente = new Paciente(
+                "12345678", "Juan", "Perez",
+                "987654321", "juan@gmail.com"
+        );
+
+        assertEquals("12345678", paciente.getDocumento());
+        assertEquals("Juan", paciente.getNombres());
+        assertEquals("Perez", paciente.getApellidos());
+        assertEquals("987654321", paciente.getTelefono());
+        assertEquals("juan@gmail.com", paciente.getCorreo());
+    }
 }
