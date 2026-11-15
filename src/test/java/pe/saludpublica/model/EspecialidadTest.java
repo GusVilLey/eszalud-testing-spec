@@ -19,4 +19,12 @@ class EspecialidadTest {
 
         assertNotNull(especialidad);
     }
+
+    @Test
+    @DisplayName("No debe permitir nombre nulo")
+    void shouldThrowExceptionWhenNameIsNull() {
+        assertThrows(IllegalArgumentException.class, () ->
+                new Especialidad(null, "Especialidad médica del corazón")
+        );
     }
+}
