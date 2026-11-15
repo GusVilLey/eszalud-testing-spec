@@ -34,7 +34,7 @@ class CitaMedicaTest {
     @DisplayName("No debe permitir paciente nulo")
     void shouldThrowExceptionWhenPatientIsNull() {
         assertThrows(IllegalArgumentException.class, () ->
-                new CitaMedica("Pedro", "DOC001", "ESP001",
+                new CitaMedica(null, "DOC001", "ESP001",
                         fechaHora, "Consulta general", EstadoCita.PROGRAMADA)
         );
     }
