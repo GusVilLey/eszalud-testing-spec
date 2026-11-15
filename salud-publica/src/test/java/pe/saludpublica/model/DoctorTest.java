@@ -42,4 +42,15 @@ class DoctorTest {
         assertThrows(IllegalArgumentException.class,
                 () -> new Doctor("11223344", "Carlos", "Ramírez", null, "ESP-001"));
     }
+    @Test
+    @DisplayName("Conservar cada atributo después de construir el objeto")
+    void shouldKeepEachAttributeAfterConstruction() {
+        Doctor doctor = new Doctor("55667788", "Marta", "Salazar", "CMP 123456", "ESP-002");
+
+        assertEquals("55667788", doctor.getDocumento());
+        assertEquals("Marta", doctor.getNombres());
+        assertEquals("Salazar", doctor.getApellidos());
+        assertEquals("CMP 123456", doctor.getColegiatura());
+        assertEquals("ESP-002", doctor.getEspecialidad());
+    }
 }
