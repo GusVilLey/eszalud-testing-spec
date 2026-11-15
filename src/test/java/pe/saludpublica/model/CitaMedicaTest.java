@@ -55,4 +55,19 @@ public class CitaMedicaTest {
                 )
         );
     }
+    @Test
+    @DisplayName("Rechazar la creación de una cita sin especialidad")
+    void shouldRejectAppointmentWithoutSpecialty() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new CitaMedica(
+                        "PAC-123",
+                        "DOC-456",
+                        null,
+                        "2026-11-20 10:00",
+                        "Consulta general",
+                        "PROGRAMADA"
+                )
+        );
+    }
 }
