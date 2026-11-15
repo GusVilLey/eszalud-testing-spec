@@ -6,7 +6,8 @@ public class CitaMedica {
     private String especialidad;
     private String fechaHora;
     private String motivo;
-    private String estado;
+
+    private EstadoCita estado;
 
     public CitaMedica(String paciente, String doctor, String especialidad, String fechaHora, String motivo, String estado) {
         if (paciente == null) {
@@ -21,12 +22,19 @@ public class CitaMedica {
         if (fechaHora == null) {
             throw new IllegalArgumentException("La fecha y hora no pueden ser nulas");
         }
+
+
         this.paciente = paciente;
         this.doctor = doctor;
         this.especialidad = especialidad;
         this.fechaHora = fechaHora;
         this.motivo = motivo;
-        this.estado = estado;
+
+        if (estado == null) {
+            this.estado = EstadoCita.PROGRAMADA;
+        } else {
+            this.estado = EstadoCita.valueOf(estado);
+        }
     }
 
     public String getPaciente() {
@@ -50,6 +58,6 @@ public class CitaMedica {
     }
 
     public String getEstado() {
-        return estado;
+        return estado.name();
     }
 }
