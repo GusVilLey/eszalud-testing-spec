@@ -38,4 +38,13 @@ class CitaMedicaTest {
                         fechaHora, "Consulta general", EstadoCita.PROGRAMADA)
         );
     }
+
+    @Test
+    @DisplayName("No debe permitir doctor nulo")
+    void shouldThrowExceptionWhenDoctorIsNull() {
+        assertThrows(IllegalArgumentException.class, () ->
+                new CitaMedica("PAC001", "Juan", "ESP001",
+                        fechaHora, "Consulta general", EstadoCita.PROGRAMADA)
+        );
+    }
 }
