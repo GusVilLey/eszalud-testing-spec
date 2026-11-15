@@ -35,7 +35,7 @@ void shouldRejectPatientWithoutDocument() {
     assertThrows(
             IllegalArgumentException.class,
             () -> new Paciente(
-                    "",
+                    null,
                     "Ana",
                     "Pérez",
                     "987654321",
