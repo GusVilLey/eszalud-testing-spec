@@ -65,7 +65,7 @@ void shouldRejectPatientWithoutSurnames() {
 @DisplayName("Debe devolver correctamente los atributos del paciente")
 void shouldReturnCorrectPatientAttributes() {
     Paciente paciente = new Paciente(
-            "", "Juan", "Perez",
+            "12345678", "Juan", "Perez",
             "987654321", "juan@gmail.com"
     );
 
