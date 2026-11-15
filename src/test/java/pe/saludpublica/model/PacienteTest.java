@@ -29,7 +29,7 @@ import static org.junit.jupiter.api.Assertions.*;
     @DisplayName("Rechazar la creacion de un paciente sin documentos")
     void shouldRejectPatientWithhoutDocument(){
         assertThrows(
-                IllegalAccessError.class,
+                IllegalArgumentException.class,
                 () -> new Paciente(
                         null,
                         "Ana",
