@@ -71,4 +71,13 @@ class CitaMedicaTest {
                 )
         );
     }
+
+@Test
+@DisplayName("No debe permitir estado nulo")
+void shouldThrowExceptionWhenStatusIsNull() {
+    assertThrows(IllegalArgumentException.class, () ->
+            new CitaMedica("PAC001", "DOC001", "ESP001",
+                    fechaHora, "Consulta general", null)
+    );
+}
 }
