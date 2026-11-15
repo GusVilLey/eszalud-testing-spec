@@ -74,4 +74,13 @@ class DoctorTest {
         assertEquals("CMP12345", doctor.getColegiatura());
         assertEquals("CARDIOLOGIA", doctor.getEspecialidad());
     }
-    }
+
+@Test
+@DisplayName("No debe permitir especialidad nula")
+void shouldThrowExceptionWhenSpecialtyIsNull() {
+    assertThrows(IllegalArgumentException.class, () ->
+            new Doctor("12345678", "Juan", "Perez",
+                    "CMP12345", null)
+    );
+}
+}
