@@ -38,4 +38,13 @@ void shouldThrowExceptionWhenPatientIsNull() {
                     fechaHora, "Consulta general", EstadoCita.PROGRAMADA)
     );
 }
+
+@Test
+@DisplayName("No debe permitir doctor nulo")
+void shouldThrowExceptionWhenDoctorIsNull() {
+    assertThrows(IllegalArgumentException.class, () ->
+            new CitaMedica("PAC001", null, "ESP001",
+                    fechaHora, "Consulta general", EstadoCita.PROGRAMADA)
+    );
+}
     }
