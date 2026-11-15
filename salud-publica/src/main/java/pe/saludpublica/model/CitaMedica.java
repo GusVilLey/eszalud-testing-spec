@@ -21,6 +21,9 @@ public class CitaMedica {
         if (especialidad == null) {
             throw new IllegalArgumentException("El identificador de la especialidad es obligatorio");
         }
+        if (fechaHora == null) {
+            throw new IllegalArgumentException("La fecha y hora de la cita son obligatorias");
+        }
         this.paciente = paciente;
         this.doctor = doctor;
         this.especialidad = especialidad;
