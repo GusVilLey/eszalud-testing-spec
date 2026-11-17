@@ -12,6 +12,18 @@ public class Doctor {
     private final String especialidad;
 
     public Doctor(String documento, String nombres, String apellidos, String colegiatura, String especialidad) {
+        if (documento == null) {
+            throw new IllegalArgumentException("El documento del doctor es obligatorio");
+        }
+        if (nombres == null) {
+            throw new IllegalArgumentException("Los nombres del doctor son obligatorios");
+        }
+        if (apellidos == null) {
+            throw new IllegalArgumentException("Los apellidos del doctor son obligatorios");
+        }
+        if (colegiatura == null) {
+            throw new IllegalArgumentException("La colegiatura del doctor es obligatoria");
+        }
         this.documento = documento;
         this.nombres = nombres;
         this.apellidos = apellidos;
