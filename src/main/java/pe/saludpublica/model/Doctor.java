@@ -12,26 +12,18 @@ public class Doctor {
     private final String especialidad;
 
     public Doctor(String documento, String nombres, String apellidos, String colegiatura, String especialidad) {
-        if (documento == null || documento.isBlank()) {
-            throw new IllegalArgumentException("El documento del doctor es obligatorio");
+        this.documento = requerido(documento, "El documento del doctor es obligatorio");
+        this.nombres = requerido(nombres, "Los nombres del doctor son obligatorios");
+        this.apellidos = requerido(apellidos, "Los apellidos del doctor son obligatorios");
+        this.colegiatura = requerido(colegiatura, "La colegiatura del doctor es obligatoria");
+        this.especialidad = requerido(especialidad, "La especialidad del doctor es obligatoria");
+    }
+
+    private static String requerido(String valor, String mensaje) {
+        if (valor == null || valor.isBlank()) {
+            throw new IllegalArgumentException(mensaje);
         }
-        if (nombres == null || nombres.isBlank()) {
-            throw new IllegalArgumentException("Los nombres del doctor son obligatorios");
-        }
-        if (apellidos == null || apellidos.isBlank()) {
-            throw new IllegalArgumentException("Los apellidos del doctor son obligatorios");
-        }
-        if (colegiatura == null || colegiatura.isBlank()) {
-            throw new IllegalArgumentException("La colegiatura del doctor es obligatoria");
-        }
-        if (especialidad == null || especialidad.isBlank()) {
-            throw new IllegalArgumentException("La especialidad del doctor es obligatoria");
-        }
-        this.documento = documento;
-        this.nombres = nombres;
-        this.apellidos = apellidos;
-        this.colegiatura = colegiatura;
-        this.especialidad = especialidad;
+        return valor;
     }
 
     public String getDocumento() {
