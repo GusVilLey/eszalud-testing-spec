@@ -12,13 +12,13 @@ public class Paciente {
     private final String correo;
 
     public Paciente(String documento, String nombres, String apellidos, String telefono, String correo) {
-        if (documento == null) {
+        if (documento == null || documento.isBlank()) {
             throw new IllegalArgumentException("El documento del paciente es obligatorio");
         }
-        if (nombres == null) {
+        if (nombres == null || nombres.isBlank()) {
             throw new IllegalArgumentException("Los nombres del paciente son obligatorios");
         }
-        if (apellidos == null) {
+        if (apellidos == null || apellidos.isBlank()) {
             throw new IllegalArgumentException("Los apellidos del paciente son obligatorios");
         }
         this.documento = documento;
