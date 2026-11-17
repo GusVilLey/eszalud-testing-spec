@@ -76,4 +76,46 @@ class DoctorTest {
         assertThrows(IllegalArgumentException.class,
                 () -> new Doctor("45678912", "Roberto Enrique", "Salazar Mendoza", null, "6af71da3501cca046a166045"));
     }
+
+    @Test
+    @DisplayName("Rechazar la creación de un doctor con documento vacío")
+    void shouldRejectDoctorWithBlankDocument() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Doctor("", "Roberto Enrique", "Salazar Mendoza", "CMP 085432", "6af71da3501cca046a166045"));
+    }
+
+    @Test
+    @DisplayName("Rechazar la creación de un doctor con nombres vacíos")
+    void shouldRejectDoctorWithBlankFirstNames() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Doctor("45678912", "", "Salazar Mendoza", "CMP 085432", "6af71da3501cca046a166045"));
+    }
+
+    @Test
+    @DisplayName("Rechazar la creación de un doctor con apellidos vacíos")
+    void shouldRejectDoctorWithBlankLastNames() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Doctor("45678912", "Roberto Enrique", "", "CMP 085432", "6af71da3501cca046a166045"));
+    }
+
+    @Test
+    @DisplayName("Rechazar la creación de un doctor con colegiatura vacía")
+    void shouldRejectDoctorWithBlankMedicalLicense() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Doctor("45678912", "Roberto Enrique", "Salazar Mendoza", "", "6af71da3501cca046a166045"));
+    }
+
+    @Test
+    @DisplayName("Rechazar la creación de un doctor sin especialidad asociada")
+    void shouldRejectDoctorWithoutSpecialty() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Doctor("45678912", "Roberto Enrique", "Salazar Mendoza", "CMP 085432", null));
+    }
+
+    @Test
+    @DisplayName("Rechazar la creación de un doctor con especialidad vacía")
+    void shouldRejectDoctorWithBlankSpecialty() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Doctor("45678912", "Roberto Enrique", "Salazar Mendoza", "CMP 085432", ""));
+    }
 }
