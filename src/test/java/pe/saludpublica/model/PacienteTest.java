@@ -69,4 +69,32 @@ class PacienteTest {
         assertThrows(IllegalArgumentException.class,
                 () -> new Paciente("12345678", "Ana", null, "987654321", "ana@mail.com"));
     }
+
+    @Test
+    @DisplayName("Rechazar la creación de un paciente con documento vacío")
+    void shouldRejectPatientWithBlankDocument() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Paciente("", "Ana", "Pérez", "987654321", "ana@mail.com"));
+    }
+
+    @Test
+    @DisplayName("Rechazar la creación de un paciente con documento compuesto solo por espacios")
+    void shouldRejectPatientWithWhitespaceOnlyDocument() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Paciente("   ", "Ana", "Pérez", "987654321", "ana@mail.com"));
+    }
+
+    @Test
+    @DisplayName("Rechazar la creación de un paciente con nombres vacíos")
+    void shouldRejectPatientWithBlankFirstNames() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Paciente("12345678", "", "Pérez", "987654321", "ana@mail.com"));
+    }
+
+    @Test
+    @DisplayName("Rechazar la creación de un paciente con apellidos vacíos")
+    void shouldRejectPatientWithBlankLastNames() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Paciente("12345678", "Ana", "", "987654321", "ana@mail.com"));
+    }
 }
