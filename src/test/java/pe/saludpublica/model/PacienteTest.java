@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class PacienteTest {
 
@@ -46,5 +47,26 @@ class PacienteTest {
                 () -> assertEquals("912345678", paciente.getTelefono()),
                 () -> assertEquals("luis.ramirez@mail.com", paciente.getCorreo())
         );
+    }
+
+    @Test
+    @DisplayName("Rechazar la creación de un paciente sin documento")
+    void shouldRejectPatientWithoutDocument() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Paciente(null, "Ana", "Pérez", "987654321", "ana@mail.com"));
+    }
+
+    @Test
+    @DisplayName("Rechazar la creación de un paciente sin nombres")
+    void shouldRejectPatientWithoutFirstNames() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Paciente("12345678", null, "Pérez", "987654321", "ana@mail.com"));
+    }
+
+    @Test
+    @DisplayName("Rechazar la creación de un paciente sin apellidos")
+    void shouldRejectPatientWithoutLastNames() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Paciente("12345678", "Ana", null, "987654321", "ana@mail.com"));
     }
 }
