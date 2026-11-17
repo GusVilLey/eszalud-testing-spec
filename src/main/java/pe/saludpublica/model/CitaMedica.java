@@ -5,32 +5,44 @@ package pe.saludpublica.model;
  */
 public class CitaMedica {
 
+    private final String paciente;
+    private final String doctor;
+    private final String especialidad;
+    private final String fechaHora;
+    private final String motivo;
+    private final EstadoCita estado;
+
     public CitaMedica(String paciente, String doctor, String especialidad,
                       String fechaHora, String motivo, EstadoCita estado) {
-        throw new UnsupportedOperationException("Pendiente de implementación");
+        this.paciente = paciente;
+        this.doctor = doctor;
+        this.especialidad = especialidad;
+        this.fechaHora = fechaHora;
+        this.motivo = motivo;
+        this.estado = estado;
     }
 
     public String getPaciente() {
-        return null;
+        return paciente;
     }
 
     public String getDoctor() {
-        return null;
+        return doctor;
     }
 
     public String getEspecialidad() {
-        return null;
+        return especialidad;
     }
 
     public String getFechaHora() {
-        return null;
+        return fechaHora;
     }
 
     public String getMotivo() {
-        return null;
+        return motivo;
     }
 
     public EstadoCita getEstado() {
-        return null;
+        return estado;
     }
 }
