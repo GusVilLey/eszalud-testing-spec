@@ -1,9 +1,17 @@
 package pe.saludpublica.model;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
+
 /**
  * Cita médica programada entre un paciente y un doctor.
  */
 public class CitaMedica {
+
+    private static final DateTimeFormatter FORMATO_FECHA_HORA =
+            DateTimeFormatter.ofPattern("uuuu-MM-dd HH:mm").withResolverStyle(ResolverStyle.STRICT);
 
     private final String paciente;
     private final String doctor;
@@ -17,7 +25,7 @@ public class CitaMedica {
         this.paciente = requerido(paciente, "El identificador del paciente es obligatorio");
         this.doctor = requerido(doctor, "El identificador del doctor es obligatorio");
         this.especialidad = requerido(especialidad, "El identificador de la especialidad es obligatorio");
-        this.fechaHora = fechaHora;
+        this.fechaHora = fechaHoraValida(fechaHora);
         this.motivo = motivo;
         this.estado = estado == null ? EstadoCita.PROGRAMADA : estado;
     }
@@ -27,6 +35,16 @@ public class CitaMedica {
             throw new IllegalArgumentException(mensaje);
         }
         return valor;
+    }
+
+    private static String fechaHoraValida(String valor) {
+        String fecha = requerido(valor, "La fecha y hora de la cita es obligatoria");
+        try {
+            LocalDateTime.parse(fecha, FORMATO_FECHA_HORA);
+        } catch (DateTimeParseException e) {
+            throw new IllegalArgumentException("La fecha y hora debe tener el formato yyyy-MM-dd HH:mm", e);
+        }
+        return fecha;
     }
 
     public String getPaciente() {
