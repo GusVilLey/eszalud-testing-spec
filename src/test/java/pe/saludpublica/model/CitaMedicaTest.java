@@ -2,6 +2,8 @@ package pe.saludpublica.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -75,5 +77,36 @@ class CitaMedicaTest {
         assertThrows(IllegalArgumentException.class,
                 () -> new CitaMedica("6af71e0b501cca046a166049", "6af7271e501cca046a16604f", null,
                         "2026-11-23 16:30", "Dolor abdominal", EstadoCita.PROGRAMADA));
+    }
+
+    @Test
+    @DisplayName("Asignar el estado PROGRAMADA cuando la cita se crea sin estado")
+    void shouldDefaultStatusToScheduledWhenStatusIsNull() {
+        CitaMedica cita = new CitaMedica(
+                "6af71e0b501cca046a166049",
+                "6af7271e501cca046a16604f",
+                "6af71da3501cca046a166045",
+                "2026-11-23 16:30",
+                "Dolor abdominal",
+                null
+        );
+
+        assertEquals(EstadoCita.PROGRAMADA, cita.getEstado());
+    }
+
+    @ParameterizedTest
+    @EnumSource(EstadoCita.class)
+    @DisplayName("Conservar el estado recibido cuando la cita se crea con un estado válido")
+    void shouldKeepReceivedStatus(EstadoCita estado) {
+        CitaMedica cita = new CitaMedica(
+                "6af71e0b501cca046a166049",
+                "6af7271e501cca046a16604f",
+                "6af71da3501cca046a166045",
+                "2026-11-23 16:30",
+                "Dolor abdominal",
+                estado
+        );
+
+        assertEquals(estado, cita.getEstado());
     }
 }
