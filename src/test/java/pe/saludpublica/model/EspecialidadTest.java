@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class EspecialidadTest {
@@ -36,5 +37,35 @@ class EspecialidadTest {
                 () -> assertEquals("Pediatría", especialidad.getNombre()),
                 () -> assertEquals("Atención de niños", especialidad.getDescripcion())
         );
+    }
+
+    @Test
+    @DisplayName("Rechazar la creación de una especialidad con nombre vacío")
+    void shouldRejectSpecialtyWithBlankName() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Especialidad("", "Atención del corazón"));
+    }
+
+    @Test
+    @DisplayName("Rechazar la creación de una especialidad con nombre compuesto solo por espacios")
+    void shouldRejectSpecialtyWithWhitespaceOnlyName() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new Especialidad("   ", "Atención del corazón"));
+    }
+
+    @Test
+    @DisplayName("Aceptar una especialidad sin descripción")
+    void shouldAcceptSpecialtyWithoutDescription() {
+        Especialidad especialidad = new Especialidad("Cardiología", null);
+
+        assertNull(especialidad.getDescripcion());
+    }
+
+    @Test
+    @DisplayName("Aceptar una especialidad con descripción vacía")
+    void shouldAcceptSpecialtyWithBlankDescription() {
+        Especialidad especialidad = new Especialidad("Cardiología", "");
+
+        assertEquals("", especialidad.getDescripcion());
     }
 }

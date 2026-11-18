@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class PacienteTest {
@@ -96,5 +97,13 @@ class PacienteTest {
     void shouldRejectPatientWithBlankLastNames() {
         assertThrows(IllegalArgumentException.class,
                 () -> new Paciente("12345678", "Ana", "", "987654321", "ana@mail.com"));
+    }
+
+    @Test
+    @DisplayName("Aceptar un paciente sin correo cuando el dato es opcional")
+    void shouldAcceptPatientWithoutEmail() {
+        Paciente paciente = new Paciente("12345678", "Ana", "Pérez", "987654321", null);
+
+        assertNull(paciente.getCorreo());
     }
 }
