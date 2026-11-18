@@ -22,23 +22,16 @@ public class CitaMedica {
 
     public CitaMedica(String paciente, String doctor, String especialidad,
                       String fechaHora, String motivo, EstadoCita estado) {
-        this.paciente = requerido(paciente, "El identificador del paciente es obligatorio");
-        this.doctor = requerido(doctor, "El identificador del doctor es obligatorio");
-        this.especialidad = requerido(especialidad, "El identificador de la especialidad es obligatorio");
+        this.paciente = Validaciones.requerido(paciente, "El identificador del paciente es obligatorio");
+        this.doctor = Validaciones.requerido(doctor, "El identificador del doctor es obligatorio");
+        this.especialidad = Validaciones.requerido(especialidad, "El identificador de la especialidad es obligatorio");
         this.fechaHora = fechaHoraValida(fechaHora);
-        this.motivo = requerido(motivo, "El motivo de la cita es obligatorio");
+        this.motivo = Validaciones.requerido(motivo, "El motivo de la cita es obligatorio");
         this.estado = estado == null ? EstadoCita.PROGRAMADA : estado;
     }
 
-    private static String requerido(String valor, String mensaje) {
-        if (valor == null || valor.isBlank()) {
-            throw new IllegalArgumentException(mensaje);
-        }
-        return valor;
-    }
-
     private static String fechaHoraValida(String valor) {
-        String fecha = requerido(valor, "La fecha y hora de la cita es obligatoria");
+        String fecha = Validaciones.requerido(valor, "La fecha y hora de la cita es obligatoria");
         try {
             LocalDateTime.parse(fecha, FORMATO_FECHA_HORA);
         } catch (DateTimeParseException e) {

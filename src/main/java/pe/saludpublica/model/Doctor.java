@@ -12,18 +12,11 @@ public class Doctor {
     private final String especialidad;
 
     public Doctor(String documento, String nombres, String apellidos, String colegiatura, String especialidad) {
-        this.documento = requerido(documento, "El documento del doctor es obligatorio");
-        this.nombres = requerido(nombres, "Los nombres del doctor son obligatorios");
-        this.apellidos = requerido(apellidos, "Los apellidos del doctor son obligatorios");
-        this.colegiatura = requerido(colegiatura, "La colegiatura del doctor es obligatoria");
-        this.especialidad = requerido(especialidad, "La especialidad del doctor es obligatoria");
-    }
-
-    private static String requerido(String valor, String mensaje) {
-        if (valor == null || valor.isBlank()) {
-            throw new IllegalArgumentException(mensaje);
-        }
-        return valor;
+        this.documento = Validaciones.requerido(documento, "El documento del doctor es obligatorio");
+        this.nombres = Validaciones.requerido(nombres, "Los nombres del doctor son obligatorios");
+        this.apellidos = Validaciones.requerido(apellidos, "Los apellidos del doctor son obligatorios");
+        this.colegiatura = Validaciones.requerido(colegiatura, "La colegiatura del doctor es obligatoria");
+        this.especialidad = Validaciones.requerido(especialidad, "La especialidad del doctor es obligatoria");
     }
 
     public String getDocumento() {

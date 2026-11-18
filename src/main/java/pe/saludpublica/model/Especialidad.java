@@ -1,15 +1,15 @@
 package pe.saludpublica.model;
 
+/**
+ * Especialidad médica disponible en el establecimiento de salud.
+ */
 public class Especialidad {
 
     private final String nombre;
     private final String descripcion;
 
     public Especialidad(String nombre, String descripcion) {
-        if (nombre == null || nombre.isBlank()) {
-            throw new IllegalArgumentException("El nombre de la especialidad es obligatorio");
-        }
-        this.nombre = nombre;
+        this.nombre = Validaciones.requerido(nombre, "El nombre de la especialidad es obligatorio");
         this.descripcion = descripcion;
     }
 
