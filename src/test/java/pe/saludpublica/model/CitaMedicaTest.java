@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class CitaMedicaTest {
 
@@ -50,5 +51,29 @@ class CitaMedicaTest {
                 () -> assertEquals("Acné excesivo", cita.getMotivo()),
                 () -> assertEquals(EstadoCita.ATENDIDA, cita.getEstado())
         );
+    }
+
+    @Test
+    @DisplayName("Rechazar la creación de una cita médica sin identificador de paciente")
+    void shouldRejectAppointmentWithoutPatientReference() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new CitaMedica(null, "6af7271e501cca046a16604f", "6af71da3501cca046a166045",
+                        "2026-11-23 16:30", "Dolor abdominal", EstadoCita.PROGRAMADA));
+    }
+
+    @Test
+    @DisplayName("Rechazar la creación de una cita médica sin identificador de doctor")
+    void shouldRejectAppointmentWithoutDoctorReference() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new CitaMedica("6af71e0b501cca046a166049", null, "6af71da3501cca046a166045",
+                        "2026-11-23 16:30", "Dolor abdominal", EstadoCita.PROGRAMADA));
+    }
+
+    @Test
+    @DisplayName("Rechazar la creación de una cita médica sin identificador de especialidad")
+    void shouldRejectAppointmentWithoutSpecialtyReference() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new CitaMedica("6af71e0b501cca046a166049", "6af7271e501cca046a16604f", null,
+                        "2026-11-23 16:30", "Dolor abdominal", EstadoCita.PROGRAMADA));
     }
 }
