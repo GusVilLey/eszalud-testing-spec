@@ -109,4 +109,28 @@ class CitaMedicaTest {
 
         assertEquals(estado, cita.getEstado());
     }
+
+    @Test
+    @DisplayName("Rechazar la creación de una cita médica sin fecha y hora")
+    void shouldRejectAppointmentWithoutDate() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new CitaMedica("6af71e0b501cca046a166049", "6af7271e501cca046a16604f",
+                        "6af71da3501cca046a166045", null, "Dolor abdominal", EstadoCita.PROGRAMADA));
+    }
+
+    @Test
+    @DisplayName("Rechazar la creación de una cita médica con fecha y hora de formato inválido")
+    void shouldRejectAppointmentWithInvalidDateFormat() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new CitaMedica("6af71e0b501cca046a166049", "6af7271e501cca046a16604f",
+                        "6af71da3501cca046a166045", "23/11/2026 16:30", "Dolor abdominal", EstadoCita.PROGRAMADA));
+    }
+
+    @Test
+    @DisplayName("Rechazar la creación de una cita médica con una fecha inexistente")
+    void shouldRejectAppointmentWithNonExistentDate() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new CitaMedica("6af71e0b501cca046a166049", "6af7271e501cca046a16604f",
+                        "6af71da3501cca046a166045", "2026-02-30 10:00", "Dolor abdominal", EstadoCita.PROGRAMADA));
+    }
 }
