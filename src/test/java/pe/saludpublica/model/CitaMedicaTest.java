@@ -133,4 +133,28 @@ class CitaMedicaTest {
                 () -> new CitaMedica("6af71e0b501cca046a166049", "6af7271e501cca046a16604f",
                         "6af71da3501cca046a166045", "2026-02-30 10:00", "Dolor abdominal", EstadoCita.PROGRAMADA));
     }
+
+    @Test
+    @DisplayName("Rechazar la creación de una cita médica con motivo vacío")
+    void shouldRejectAppointmentWithBlankReason() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new CitaMedica("6af71e0b501cca046a166049", "6af7271e501cca046a16604f",
+                        "6af71da3501cca046a166045", "2026-11-23 16:30", "", EstadoCita.PROGRAMADA));
+    }
+
+    @Test
+    @DisplayName("Rechazar la creación de una cita médica con motivo compuesto solo por espacios")
+    void shouldRejectAppointmentWithWhitespaceOnlyReason() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new CitaMedica("6af71e0b501cca046a166049", "6af7271e501cca046a16604f",
+                        "6af71da3501cca046a166045", "2026-11-23 16:30", "   ", EstadoCita.PROGRAMADA));
+    }
+
+    @Test
+    @DisplayName("Rechazar la creación de una cita médica sin motivo")
+    void shouldRejectAppointmentWithoutReason() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new CitaMedica("6af71e0b501cca046a166049", "6af7271e501cca046a16604f",
+                        "6af71da3501cca046a166045", "2026-11-23 16:30", null, EstadoCita.PROGRAMADA));
+    }
 }
