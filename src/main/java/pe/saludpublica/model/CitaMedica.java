@@ -19,7 +19,7 @@ public class CitaMedica {
         this.especialidad = requerido(especialidad, "El identificador de la especialidad es obligatorio");
         this.fechaHora = fechaHora;
         this.motivo = motivo;
-        this.estado = estado;
+        this.estado = estado == null ? EstadoCita.PROGRAMADA : estado;
     }
 
     private static String requerido(String valor, String mensaje) {
