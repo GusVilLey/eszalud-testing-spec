@@ -26,7 +26,7 @@ public class CitaMedica {
         this.doctor = requerido(doctor, "El identificador del doctor es obligatorio");
         this.especialidad = requerido(especialidad, "El identificador de la especialidad es obligatorio");
         this.fechaHora = fechaHoraValida(fechaHora);
-        this.motivo = motivo;
+        this.motivo = requerido(motivo, "El motivo de la cita es obligatorio");
         this.estado = estado == null ? EstadoCita.PROGRAMADA : estado;
     }
 
